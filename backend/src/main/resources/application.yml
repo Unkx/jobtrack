@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: jobtrack
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5434/jobtrack}
+    username: ${DB_USER:jobtrack}
+    password: ${DB_PASSWORD:jobtrack}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+
+jobtrack:
+  jwt:
+    # HS256 needs at least 32 bytes; override with JWT_SECRET outside local dev
+    secret: ${JWT_SECRET:local-dev-only-secret-change-me-0123456789}
+    ttl: 24h
+  reminders:
+    # remind when an application stays in WYSLANO this many days after being sent
+    after-days: 7
+    initial-delay: 10s
+    interval: 1h

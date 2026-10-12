@@ -1,0 +1,9 @@
+.env
+.idea/
+.vscode/
+
+# Impeccable working files (review captures, downloaded references, sketches, decision-page state)
+.impeccable/review/
+.impeccable/refs/
+.impeccable/mocks/
+.impeccable/questions/

@@ -1,0 +1,154 @@
+:host {
+  display: block;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+h1 {
+  margin: 0 0 20px;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  margin: 0 0 16px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+// One sign panel: numbers set like gate numbers, divided by rules
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0;
+  border-radius: 4px;
+  background: var(--jt-panel);
+}
+
+// numeral beside its label on one baseline, like a gate sign
+.sign {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 14px;
+  padding: 20px 24px;
+
+  & + & {
+    border-left: 1px solid var(--jt-rule);
+  }
+
+  dd {
+    margin: 0;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  dt {
+    flex: 1;
+    color: var(--jt-ink);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+}
+
+.note {
+  margin: 10px 0 0;
+  color: var(--jt-muted);
+  font-size: 13px;
+}
+
+.panel {
+  margin-top: 16px;
+  padding: 20px 24px;
+  border-radius: 4px;
+  background: var(--jt-panel);
+  overflow-x: auto;
+}
+
+.chart {
+  position: relative;
+  height: 260px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: 10px 8px;
+    border-bottom: 1px solid var(--jt-rule);
+    text-align: right;
+  }
+
+  th:first-child {
+    padding-left: 0;
+    text-align: left;
+  }
+
+  thead th {
+    color: var(--jt-muted);
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  tbody th {
+    font-weight: 700;
+  }
+
+  tbody tr:last-child > * {
+    border-bottom: 0;
+  }
+}
+
+.empty-state {
+  max-width: 480px;
+  margin: 80px auto;
+  text-align: center;
+
+  h2 {
+    font-size: 22px;
+    font-weight: 800;
+  }
+
+  p {
+    margin: 0 0 24px;
+    color: var(--jt-muted);
+  }
+}
+
+.message {
+  color: var(--jt-muted);
+}
+
+@media (max-width: 599px) {
+  :host {
+    padding: 16px;
+  }
+
+  .tiles {
+    grid-template-columns: 1fr;
+  }
+
+  .sign {
+    padding: 14px 16px;
+
+    & + & {
+      border-left: 0;
+      border-top: 1px solid var(--jt-rule);
+    }
+
+    dd {
+      min-width: 72px;
+      font-size: 36px;
+    }
+  }
+
+  .panel {
+    padding: 16px;
+  }
+}

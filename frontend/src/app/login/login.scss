@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  justify-content: center;
+  padding: 72px 16px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 8px 8px;
+  --mat-card-outlined-container-color: var(--jt-panel);
+  --mat-card-outlined-outline-color: var(--jt-rule);
+  --mat-card-title-text-size: 28px;
+  --mat-card-title-text-weight: 800;
+  --mat-card-subtitle-text-color: var(--jt-muted);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 20px;
+}
+
+.error {
+  margin: 0;
+  color: var(--jt-stop);
+}

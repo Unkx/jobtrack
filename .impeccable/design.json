@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-12T18:00:00Z",
+  "title": "Design System: JobTrack",
+  "extensions": {
+    "colorMeta": {
+      "sign-black": { "role": "neutral", "displayName": "Sign-Black (night ground)", "canonical": "--jt-ground: light-dark(#f2f3f4, #101113)", "tonalRamp": ["#0b0b0c", "#101113", "#1c1e22", "#2c2f35", "#4a4d53", "#6f726c", "#a2a49f", "#f5f5f0"] },
+      "panel-frame": { "role": "neutral", "displayName": "Panel Frame (night)", "canonical": "--jt-panel: light-dark(#ffffff, #1c1e22)", "tonalRamp": ["#0b0b0c", "#101113", "#1c1e22", "#2c2f35", "#4a4d53", "#6f726c", "#a2a49f", "#f5f5f0"] },
+      "panel-raised": { "role": "neutral", "displayName": "Panel Raised (night)", "canonical": "--jt-panel-raised: light-dark(#e8e9eb, #24272c)", "tonalRamp": ["#0b0b0c", "#101113", "#24272c", "#2c2f35", "#4a4d53", "#6f726c", "#a2a49f", "#f5f5f0"] },
+      "rule": { "role": "neutral", "displayName": "Rule (night)", "canonical": "--jt-rule: light-dark(#d6d8db, #2c2f35)", "tonalRamp": ["#0b0b0c", "#101113", "#1c1e22", "#2c2f35", "#4a4d53", "#6f726c", "#a2a49f", "#f5f5f0"] },
+      "field-frame": { "role": "neutral", "displayName": "Field Frame (night)", "canonical": "--jt-frame: light-dark(#8a8d93, #6f726c)", "tonalRamp": ["#1a1b19", "#2b2d2a", "#3f413d", "#555852", "#6f726c", "#8c8e88", "#b3b5af", "#e2e3de"] },
+      "icon-white": { "role": "neutral", "displayName": "Icon-White (night ink)", "canonical": "--jt-ink: light-dark(#111214, #f5f5f0)", "tonalRamp": ["#1d1d1a", "#33332f", "#4f4f4a", "#6e6e68", "#919189", "#b6b6ae", "#d9d9d2", "#f5f5f0"] },
+      "muted-ink": { "role": "neutral", "displayName": "Muted Ink (night)", "canonical": "--jt-muted: light-dark(#55585e, #a2a49f)", "tonalRamp": ["#1c1d1b", "#30312e", "#474945", "#62645f", "#80827d", "#a2a49f", "#c6c8c3", "#ebece8"] },
+      "signal-yellow": { "role": "primary", "displayName": "Signal Yellow", "canonical": "--jt-signal: #ffd200 (both schemes); also --jt-mark and --jt-overdue by night", "tonalRamp": ["#2e2400", "#4d3d00", "#6f5900", "#947700", "#bb9700", "#e2b800", "#ffd200", "#fff1b3"] },
+      "on-signal": { "role": "primary", "displayName": "On-Signal Black", "canonical": "--jt-on-signal: #0b0b0b (both schemes); also --jt-on-stop by night", "tonalRamp": ["#0b0b0b", "#1f1f1f", "#363636", "#4f4f4f", "#6b6b6b", "#8a8a8a", "#b0b0b0", "#e0e0e0"] },
+      "stop-red": { "role": "secondary", "displayName": "Stop Red (night)", "canonical": "--jt-stop: light-dark(#c43b26, #e5533d)", "tonalRamp": ["#3a0f08", "#5c1a10", "#82271a", "#aa3626", "#cf4632", "#e5533d", "#f28d7d", "#fbd2cb"] },
+      "ground-day": { "role": "neutral", "displayName": "Concrete (day ground)", "canonical": "--jt-ground: light-dark(#f2f3f4, #101113)", "tonalRamp": ["#1e2021", "#3a3c3e", "#5a5c5f", "#7d8083", "#a2a5a8", "#c7c9cc", "#e3e5e7", "#f2f3f4"] },
+      "panel-day": { "role": "neutral", "displayName": "Panel White (day)", "canonical": "--jt-panel: light-dark(#ffffff, #1c1e22)", "tonalRamp": ["#1e2021", "#3a3c3e", "#5a5c5f", "#7d8083", "#a2a5a8", "#c7c9cc", "#e8e9eb", "#ffffff"] },
+      "panel-raised-day": { "role": "neutral", "displayName": "Panel Raised (day)", "canonical": "--jt-panel-raised: light-dark(#e8e9eb, #24272c)", "tonalRamp": ["#1e2021", "#3a3c3e", "#5a5c5f", "#7d8083", "#a2a5a8", "#c7c9cc", "#e8e9eb", "#f7f7f8"] },
+      "rule-day": { "role": "neutral", "displayName": "Rule (day)", "canonical": "--jt-rule: light-dark(#d6d8db, #2c2f35)", "tonalRamp": ["#1e2021", "#3a3c3e", "#5a5c5f", "#7d8083", "#a2a5a8", "#c0c2c5", "#d6d8db", "#eeeff0"] },
+      "field-frame-day": { "role": "neutral", "displayName": "Field Frame (day)", "canonical": "--jt-frame: light-dark(#8a8d93, #6f726c)", "tonalRamp": ["#1c1d1f", "#303236", "#474a4f", "#62656a", "#8a8d93", "#a7aaaf", "#c8cace", "#e9eaec"] },
+      "ink-day": { "role": "neutral", "displayName": "Ink (day)", "canonical": "--jt-ink: light-dark(#111214, #f5f5f0); also --jt-mark by day", "tonalRamp": ["#111214", "#26282b", "#3e4045", "#595c61", "#7a7d83", "#a0a3a8", "#c9cbce", "#eeeff0"] },
+      "muted-ink-day": { "role": "neutral", "displayName": "Muted Ink (day)", "canonical": "--jt-muted: light-dark(#55585e, #a2a49f)", "tonalRamp": ["#1c1d1f", "#303236", "#44474c", "#55585e", "#74777d", "#9a9da2", "#c3c5c9", "#ebecee"] },
+      "overdue-day": { "role": "primary", "displayName": "Deep Signal (day overdue)", "canonical": "--jt-overdue: light-dark(#a88400, #ffd200)", "tonalRamp": ["#2e2400", "#4d3d00", "#6f5900", "#8c6e00", "#a88400", "#d1a600", "#ffd200", "#fff1b3"] },
+      "stop-red-day": { "role": "secondary", "displayName": "Stop Red (day)", "canonical": "--jt-stop: light-dark(#c43b26, #e5533d)", "tonalRamp": ["#3a0f08", "#5c1a10", "#82271a", "#a8301f", "#c43b26", "#e0614c", "#f28d7d", "#fbd2cb"] },
+      "on-stop-day": { "role": "secondary", "displayName": "On-Stop White (day)", "canonical": "--jt-on-stop: light-dark(#ffffff, #0b0b0b)", "tonalRamp": ["#1e1e1e", "#3a3a3a", "#5a5a5a", "#7d7d7d", "#a2a2a2", "#c7c7c7", "#e8e8e8", "#ffffff"] }
+    },
+    "typographyMeta": {
+      "numeral-band": { "displayName": "Band numeral", "purpose": "Days waiting on the next-step band; largest numeral on screen (40px on phones)." },
+      "numeral-sign": { "displayName": "Sign numeral", "purpose": "Stats headline figures beside their labels (36px on phones)." },
+      "numeral-gate": { "displayName": "Gate numeral", "purpose": "Column counts, numeral before stage name on one baseline." },
+      "headline": { "displayName": "Headline", "purpose": "Page h1 and login card title (22px on phones for page h1)." },
+      "title-lg": { "displayName": "Title large", "purpose": "Empty-state headings." },
+      "band-text": { "displayName": "Band text", "purpose": "Next-step sentence with bold lead-in (16px on phones)." },
+      "title": { "displayName": "Title", "purpose": "Company name on a card." },
+      "label-stage": { "displayName": "Stage label", "purpose": "Column headings, stats section headings, dialog section headings." },
+      "body": { "displayName": "Body", "purpose": "Running copy, table cells, dialog text, notes; Material body-medium with tabular figures." },
+      "meta": { "displayName": "Meta", "purpose": "Dates, source, salary, note timestamps, panel notes, table headers; muted ink." }
+    },
+    "schemes": {
+      "mechanism": "Every --jt-* colour is light-dark(day, night). html color-scheme is 'light dark' (follows the system); html[data-theme='light'|'dark'] forces one. ThemeService cycles system -> light -> dark, stores the pick in localStorage 'jobtrack.theme', and an inline pre-boot script in index.html applies it before the app renders.",
+      "constant": ["--jt-signal", "--jt-on-signal", "--jt-font", "--jt-ease-out"],
+      "scheme-dependent": ["--jt-ground", "--jt-panel", "--jt-panel-raised", "--jt-rule", "--jt-frame", "--jt-ink", "--jt-muted", "--jt-mark", "--jt-overdue", "--jt-stop", "--jt-on-stop", "--jt-hover-wash", "--jt-lift"],
+      "runtime": "Chart.js colours are resolved from the tokens via getComputedStyle and recomputed when ThemeService.scheme changes."
+    },
+    "shadows": [
+      { "name": "drag-lift", "value": "0 12px 32px var(--jt-lift)", "purpose": "Card drag preview only; --jt-lift is rgb(0 0 0 / 0.18) by day, rgb(0 0 0 / 0.5) by night." },
+      { "name": "overdue-frame", "value": "inset 0 0 0 2px var(--jt-overdue)", "purpose": "2px frame on the overdue card (deep signal by day, yellow by night); a frame, not elevation." },
+      { "name": "active-mark", "value": "inset 0 -3px var(--jt-mark)", "purpose": "Underline of the active top-bar link and the current phone stage tab." }
+    ],
+    "motion": [
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Single easing for all transitions (--jt-ease-out)." },
+      { "name": "sign-flip", "value": "240ms; from translateY(-40%) opacity 0", "purpose": "Next band message flipping in after dismiss; none under reduced motion." },
+      { "name": "nav-fade", "value": "150ms", "purpose": "Nav link colour and underline; drop-zone tint." },
+      { "name": "drag-settle", "value": "200ms transform", "purpose": "Cards reflowing during drag; none under reduced motion." }
+    ],
+    "breakpoints": [
+      { "name": "phone", "value": "599px", "purpose": "max-width; stage switcher appears, board becomes a scroll-snap strip of 85% columns, band wraps, stats signs stack, application dialog goes full-screen with a single-column form." },
+      { "name": "narrow-phone", "value": "420px", "purpose": "max-width; brand name visually hidden, the inset arrow square carries the brand; nav gap 14px." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Filled ink button for the one main action per view (white on black by night, near-black on grey-white by day).",
+      "html": "<button class=\"ds-btn-primary\">Dodaj aplikację</button>",
+      "css": ".ds-btn-primary { height: 40px; padding: 0 24px; border: 0; border-radius: 4px; background: var(--jt-ink, #f5f5f0); color: var(--jt-ground, #101113); font-family: var(--jt-font, 'Hanken Grotesk Variable', sans-serif); font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity 150ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-primary:hover { opacity: 0.9; } .ds-btn-primary:focus-visible { outline: 2px solid var(--jt-mark, #ffd200); outline-offset: 2px; }"
+    },
+    {
+      "name": "Text Button",
+      "kind": "button",
+      "refersTo": "button-text",
+      "description": "Unfilled ink action: card actions (44px tall), cancel, mode toggle.",
+      "html": "<button class=\"ds-btn-text\">Przenieś</button>",
+      "css": ".ds-btn-text { height: 44px; padding: 0 12px; border: 0; border-radius: 4px; background: transparent; color: var(--jt-ink, #f5f5f0); font-family: var(--jt-font, 'Hanken Grotesk Variable', sans-serif); font-size: 14px; font-weight: 600; cursor: pointer; } .ds-btn-text:hover { background: var(--jt-hover-wash, rgb(255 255 255 / 0.03)); } .ds-btn-text:focus-visible { outline: 2px solid var(--jt-mark, #ffd200); outline-offset: 2px; }"
+    },
+    {
+      "name": "Next-Step Band",
+      "kind": "custom",
+      "refersTo": "band",
+      "description": "Full-width yellow wayfinding strip, identical in both schemes: inset arrow, sentence, band numeral, dismiss.",
+      "html": "<section class=\"ds-band\"><span class=\"ds-band-inset\"><svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\"><path d=\"M5 12h13m-5-6 6 6-6 6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"square\"/></svg></span><p class=\"ds-band-text\"><strong>Następny krok: Acme</strong> · Junior Java Developer – warto się przypomnieć.</p><p class=\"ds-band-days\"><span class=\"ds-band-number\">20</span><span>dni bez odpowiedzi</span></p><button class=\"ds-band-dismiss\">Ukryj</button></section>",
+      "css": ".ds-band { display: flex; align-items: center; gap: 16px; padding: 12px 24px; background: var(--jt-signal, #ffd200); color: var(--jt-on-signal, #0b0b0b); font-family: var(--jt-font, 'Hanken Grotesk Variable', sans-serif); } .ds-band-inset { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 4px; background: var(--jt-on-signal, #0b0b0b); color: var(--jt-signal, #ffd200); } .ds-band-text { flex: 1; margin: 0; font-size: 18px; line-height: 1.35; } .ds-band-days { display: flex; align-items: baseline; gap: 8px; margin: 0; font-weight: 600; } .ds-band-number { font-size: 52px; font-weight: 800; line-height: 0.9; font-variant-numeric: tabular-nums; } .ds-band-dismiss { min-height: 40px; padding: 0 16px; border: 0; border-radius: 4px; background: var(--jt-on-signal, #0b0b0b); color: var(--jt-signal, #ffd200); font: inherit; font-weight: 700; cursor: pointer; } .ds-band-dismiss:focus-visible { outline: 2px solid var(--jt-on-signal, #0b0b0b); outline-offset: 2px; }"
+    },
+    {
+      "name": "Application Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Flat panel in a board column; overdue variant carries the 2px inset overdue frame.",
+      "html": "<article class=\"ds-card ds-card-overdue\"><h3 class=\"ds-card-company\">Umbrella</h3><p class=\"ds-card-position\">Java Developer</p><p class=\"ds-card-meta\">30 wrz 2026 · LinkedIn</p></article>",
+      "css": ".ds-card { width: 260px; padding: 14px 14px 12px; border-radius: 4px; background: var(--jt-panel, #1c1e22); color: var(--jt-ink, #f5f5f0); font-family: var(--jt-font, 'Hanken Grotesk Variable', sans-serif); font-size: 14px; cursor: grab; } .ds-card-overdue { box-shadow: inset 0 0 0 2px var(--jt-overdue, #ffd200); } .ds-card-company { margin: 0; font-size: 17px; font-weight: 700; } .ds-card-position { margin: 2px 0 0; } .ds-card-meta { margin: 6px 0 0; color: var(--jt-muted, #a2a49f); font-size: 13px; }"
+    },
+    {
+      "name": "Column Heading",
+      "kind": "custom",
+      "refersTo": "numeral-gate",
+      "description": "Gate-number count before the stage name, over a 1px rule.",
+      "html": "<h2 class=\"ds-col-head\"><span class=\"ds-col-count\">4</span><span>Wysłano</span></h2>",
+      "css": ".ds-col-head { display: flex; align-items: baseline; gap: 10px; width: 260px; margin: 0; padding-bottom: 10px; border-bottom: 1px solid var(--jt-rule, #2c2f35); color: var(--jt-ink, #f5f5f0); font-family: var(--jt-font, 'Hanken Grotesk Variable', sans-serif); font-size: 15px; font-weight: 700; } .ds-col-count { font-size: 44px; font-weight: 800; line-height: 0.9; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Stage Switcher",
+      "kind": "nav",
+      "refersTo": "stage-tab",
+      "description": "Phone-only row of stage tabs above the board; current tab carries the 3px mark underline.",
+      "html": "<nav class=\"ds-stages\" aria-label=\"Przejdź do etapu\"><button class=\"ds-stage ds-stage-current\" aria-current=\"true\">Wysłano <span class=\"ds-stage-count\">4</span></button><button class=\"ds-stage\">Odpowiedź <span class=\"ds-stage-count\">2</span></button><button class=\"ds-stage\">Rozmowa <span class=\"ds-stage-count\">1</span></button></nav>",
+      "css": ".ds-stages { display: flex; gap: 4px; width: 340px; padding: 0 16px; overflow-x: auto; border-bottom: 1px solid var(--jt-rule, #2c2f35); scrollbar-width: none; font-family: var(--jt-font, 'Hanken Grotesk Variable', sans-serif); font-size: 14px; } .ds-stage { flex: none; min-height: 44px; padding: 0 10px; border: 0; background: none; color: var(--jt-muted, #a2a49f); font: inherit; font-weight: 600; white-space: nowrap; box-shadow: inset 0 -3px transparent; cursor: pointer; } .ds-stage-current { color: var(--jt-ink, #f5f5f0); box-shadow: inset 0 -3px var(--jt-mark, #ffd200); } .ds-stage-count { font-weight: 800; } .ds-stage:focus-visible { outline: 2px solid var(--jt-mark, #ffd200); outline-offset: 2px; }"
+    },
+    {
+      "name": "Outlined Field",
+      "kind": "input",
+      "refersTo": "input-outlined",
+      "description": "Framed sign-panel input: 1px field frame at rest, 2px mark-colour frame and label in focus.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Stanowisko</span><input class=\"ds-field-input\" value=\"Junior Java Developer\" /></label>",
+      "css": ".ds-field { position: relative; display: block; width: 280px; font-family: var(--jt-font, 'Hanken Grotesk Variable', sans-serif); } .ds-field-label { position: absolute; top: -8px; left: 10px; padding: 0 4px; background: var(--jt-panel-raised, #24272c); color: var(--jt-muted, #a2a49f); font-size: 12px; } .ds-field-input { width: 100%; box-sizing: border-box; height: 48px; padding: 0 14px; border: 1px solid var(--jt-frame, #6f726c); border-radius: 4px; background: transparent; color: var(--jt-ink, #f5f5f0); caret-color: var(--jt-mark, #ffd200); font: inherit; font-size: 14px; outline: none; } .ds-field-input:hover { border-color: var(--jt-ink, #f5f5f0); } .ds-field-input:focus { border: 2px solid var(--jt-mark, #ffd200); padding: 0 13px; } .ds-field:focus-within .ds-field-label { color: var(--jt-mark, #ffd200); }"
+    },
+    {
+      "name": "Top Bar Navigation",
+      "kind": "nav",
+      "refersTo": "topbar",
+      "description": "56px ground bar: inset-arrow wordmark, muted links with a 3px mark-colour active underline, theme toggle and log out at the right.",
+      "html": "<header class=\"ds-topbar\"><a class=\"ds-brand\" href=\"#\"><span class=\"ds-inset\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\"><path d=\"M5 12h13m-5-6 6 6-6 6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"square\"/></svg></span>JobTrack</a><nav class=\"ds-nav\"><a class=\"ds-nav-link ds-nav-active\" href=\"#\">Tablica</a><a class=\"ds-nav-link\" href=\"#\">Statystyki</a></nav><span class=\"ds-spacer\"></span><button class=\"ds-theme\" aria-label=\"Motyw: systemowy. Kliknij, aby zmienić.\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"8\"/><path d=\"M12 4v16a8 8 0 0 0 0-16Z\" fill=\"currentColor\"/></svg></button><button class=\"ds-logout\">Wyloguj się</button></header>",
+      "css": ".ds-topbar { display: flex; align-items: center; gap: 32px; height: 56px; padding: 0 24px; border-bottom: 1px solid var(--jt-rule, #2c2f35); background: var(--jt-ground, #101113); font-family: var(--jt-font, 'Hanken Grotesk Variable', sans-serif); font-size: 14px; } .ds-brand { display: flex; align-items: center; gap: 10px; color: var(--jt-ink, #f5f5f0); font-size: 18px; font-weight: 800; text-decoration: none; } .ds-inset { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 4px; background: var(--jt-ink, #f5f5f0); color: var(--jt-ground, #101113); } .ds-nav { display: flex; align-self: stretch; gap: 24px; } .ds-nav-link { display: flex; align-items: center; color: var(--jt-muted, #a2a49f); font-weight: 600; text-decoration: none; box-shadow: inset 0 -3px transparent; transition: color 150ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 150ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-nav-link:hover { color: var(--jt-ink, #f5f5f0); } .ds-nav-active { color: var(--jt-ink, #f5f5f0); box-shadow: inset 0 -3px var(--jt-mark, #ffd200); } .ds-spacer { flex: 1; } .ds-theme { display: grid; place-items: center; width: 44px; height: 44px; margin-right: -8px; border: 0; border-radius: 4px; background: none; color: var(--jt-muted, #a2a49f); cursor: pointer; } .ds-theme:hover, .ds-logout:hover { color: var(--jt-ink, #f5f5f0); } .ds-logout { min-height: 44px; padding: 0 4px; border: 0; background: none; color: var(--jt-muted, #a2a49f); font: inherit; font-weight: 600; cursor: pointer; } .ds-nav-link:focus-visible, .ds-theme:focus-visible, .ds-logout:focus-visible { outline: 2px solid var(--jt-mark, #ffd200); outline-offset: 2px; }"
+    },
+    {
+      "name": "Stage History Timeline",
+      "kind": "custom",
+      "refersTo": "label-stage",
+      "description": "Rule-topped dialog section listing stage changes like a departures board: muted date column, stage name at 600.",
+      "html": "<section class=\"ds-history\"><h3>Historia etapów</h3><ol class=\"ds-timeline\"><li><time>12 wrz 2026</time><span>Wysłano</span></li><li><time>19 wrz 2026</time><span>Odpowiedź</span></li><li><time>26 wrz 2026</time><span>Rozmowa</span></li></ol></section>",
+      "css": ".ds-history { width: 420px; padding-top: 16px; border-top: 1px solid var(--jt-rule, #2c2f35); color: var(--jt-ink, #f5f5f0); font-family: var(--jt-font, 'Hanken Grotesk Variable', sans-serif); font-size: 14px; font-variant-numeric: tabular-nums; } .ds-history h3 { margin: 0 0 12px; font-size: 15px; font-weight: 700; } .ds-timeline { margin: 0; padding: 0; list-style: none; } .ds-timeline li { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--jt-rule, #2c2f35); font-weight: 600; } .ds-timeline li:last-child { border-bottom: 0; } .ds-timeline time { color: var(--jt-muted, #a2a49f); font-weight: 400; }"
+    },
+    {
+      "name": "Stats Sign Panel",
+      "kind": "card",
+      "refersTo": "sign-panel",
+      "description": "One panel split by 1px rules; numerals set before labels like gate signs.",
+      "html": "<dl class=\"ds-signs\"><div class=\"ds-sign\"><dt>wysłanych aplikacji</dt><dd>24</dd></div><div class=\"ds-sign\"><dt>z odpowiedzią od firmy</dt><dd>38%</dd></div><div class=\"ds-sign\"><dt>dni średnio do pierwszej odpowiedzi</dt><dd>6,5</dd></div></dl>",
+      "css": ".ds-signs { display: grid; grid-template-columns: repeat(3, 1fr); width: 720px; margin: 0; border-radius: 4px; background: var(--jt-panel, #1c1e22); color: var(--jt-ink, #f5f5f0); font-family: var(--jt-font, 'Hanken Grotesk Variable', sans-serif); font-size: 14px; } .ds-sign { display: flex; flex-direction: row-reverse; justify-content: flex-end; align-items: baseline; gap: 14px; padding: 20px 24px; } .ds-sign + .ds-sign { border-left: 1px solid var(--jt-rule, #2c2f35); } .ds-sign dd { margin: 0; font-size: 48px; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; } .ds-sign dt { flex: 1; font-weight: 600; line-height: 1.3; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Terminal Concourse at Night",
+    "overview": "JobTrack is set as airport wayfinding signage after dark. The ground is sign-black, panels are slightly lifted black frames, and one signal yellow is reserved for telling you where to go next. Everything that is not wayfinding stays quiet: white ink, muted grey metadata, 1px rules. Counts are monumental numerals set beside their labels on a shared baseline, the way gate numbers sit beside destinations.\n\nThe concourse also has a daylight face. Every colour is one `--jt-*` custom property declared once with `light-dark(day, night)`; the page follows the system scheme by default, and a three-state toggle in the top bar (system, light, dark) pins it through `html[data-theme]`, applied by a pre-boot script so the page never flashes the other scheme. By day the ground is pale concrete grey, panels are white, ink is near-black; the yellow band, the inset arrow squares, the numerals and the 4px geometry are identical in both. Only the thin marks change: a 2px yellow line disappears on white, so focus, the active nav mark and the field frame turn to ink by day, and the overdue frame deepens to a darker signal.\n\nThe system is dense and operational, built on Angular Material with every Material system token remapped onto the signage palette in one place, so dialogs, menus, fields and snackbars inherit both schemes without per-component overrides. Corners are uniformly 4px, surfaces are flat, and depth only appears on things that float (dialogs, menus, the drag preview). Motion is minimal: one signature sign-flip on the next-step band, short colour fades on navigation, and transform easing during drag; all collapse to instant under reduced motion. The world explicitly rejects the category default of soft grey cards with coloured status pills. Status is expressed by column position and gate-number counts, not by hue.",
+    "keyCharacteristics": [
+      "Two schemes from one token set: sign-black night and pale-concrete day, following the system unless the visitor pins one.",
+      "Signal yellow is wayfinding only: the next-step band fill and text selection in both schemes; in the night scheme also keyboard focus, the active nav mark, the focused field, the caret and the overdue frame.",
+      "One humanist sans (Hanken Grotesk Variable, self-hosted) in sentence case; weight 800 for signs and numerals, tabular figures throughout.",
+      "Black or white inset squares carrying a square-capped arrow as the recurring sign glyph.",
+      "4px corners everywhere; flat at rest; shadows only on overlays."
+    ],
+    "rules": [
+      { "name": "The Wayfinding-Only Rule", "body": "Yellow appears only where it tells the user where to look or act next: the band, the overdue frame, focus, the active nav mark. If a yellow element does not direct attention, it is wrong.", "section": "colors" },
+      { "name": "The One Mark Rule", "body": "Thin wayfinding lines (focus, active nav, current stage, focused field, caret) all read from `--jt-mark`: yellow by night, ink by day. Yellow fills stay yellow in both schemes; yellow hairlines never sit on a white ground.", "section": "colors" },
+      { "name": "The No Status Hue Rule", "body": "Stages are not colour-coded. A rejected card dims its company name to muted ink; it does not turn red. Red is for errors and destruction.", "section": "colors" },
+      { "name": "The One Source Rule", "body": "Every colour is a `--jt-*` property declared once with `light-dark()`. Components never carry a raw hex; code that paints outside CSS (the Chart.js charts) resolves the property at runtime and re-resolves when the scheme changes.", "section": "colors" },
+      { "name": "The Gate Number Rule", "body": "Counts sit beside their label on one baseline, numeral first, at weight 800 with tight leading (0.9 to 1). The band numeral always outranks every other numeral on screen.", "section": "typography" },
+      { "name": "The Sentence Case Rule", "body": "All signs, buttons and headings are sentence case. Hierarchy comes from weight and size, never from uppercase tracking.", "section": "typography" },
+      { "name": "The Overlays-Only Rule", "body": "A surface casts a shadow only if it floats over other content (dialog, menu, drag preview). Cards, panels and the band are flat.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do map new Material components through the `--mat-sys-*` remap in the global stylesheet rather than styling them one by one.",
+      "Do declare every new colour once as a `--jt-*` property with `light-dark(day, night)` and check it in both schemes.",
+      "Do draw thin wayfinding marks (focus, active state, focused field) with `--jt-mark`, never with raw yellow.",
+      "Do keep every corner at 4px (`--mat-sys-corner-*` are all 4px).",
+      "Do set counts as 800-weight numerals beside their label on one baseline, with tabular figures.",
+      "Do use the inset arrow square (ink on ground, or black on yellow) as the product's sign glyph, drawn as inline SVG.",
+      "Do keep keyboard focus as a 2px mark-colour outline with 2px offset, switching to black on yellow surfaces.",
+      "Do give every touch control a 44px minimum target on phones.",
+      "Do give every transition a reduced-motion fallback of none."
+    ],
+    "donts": [
+      "Don't use signal yellow for anything that is not wayfinding: no yellow primary buttons, decorative fills or chart colours.",
+      "Don't put a yellow hairline, outline or text on the day ground; use the mark or overdue token.",
+      "Don't hard-code hex values in component styles or chart options; read the `--jt-*` tokens.",
+      "Don't colour-code stages or statuses; no coloured status pills. Rejected cards dim, they do not turn red.",
+      "Don't put drop shadows on cards, panels or the band; shadows are for overlays and the drag preview only.",
+      "Don't use pill or circular shapes; Material's full-corner token is pinned to 4px.",
+      "Don't set signs or buttons in uppercase with letter-spacing."
+    ]
+  }
+}

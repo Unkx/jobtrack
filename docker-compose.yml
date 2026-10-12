@@ -1,0 +1,39 @@
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: jobtrack
+      POSTGRES_USER: jobtrack
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-jobtrack}
+    # exposed for local development (backend run from the IDE); 5432 is often taken by a local Postgres
+    ports:
+      - "5434:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U jobtrack -d jobtrack"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  backend:
+    build: ./backend
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/jobtrack
+      DB_USER: jobtrack
+      DB_PASSWORD: ${DB_PASSWORD:-jobtrack}
+      # local demo default only - set JWT_SECRET (32+ chars) in .env anywhere else
+      JWT_SECRET: ${JWT_SECRET:-local-demo-secret-change-me-0123456789abcdef}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8000:80"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:

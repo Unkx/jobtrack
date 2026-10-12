@@ -1,0 +1,71 @@
+<h1>Statystyki</h1>
+
+@if (stats()?.totalApplications === 0) {
+  <section class="empty-state">
+    <h2>Brak danych do analizy</h2>
+    <p>Statystyki pojawią się, gdy dodasz pierwszą aplikację i zaczniesz przesuwać ją między etapami.</p>
+    <a matButton="filled" routerLink="/">Przejdź do tablicy</a>
+  </section>
+} @else if (stats(); as stats) {
+  <dl class="tiles">
+    <div class="sign">
+      <dt>wysłanych aplikacji</dt>
+      <dd>{{ stats.totalApplications }}</dd>
+    </div>
+    <div class="sign">
+      <dt>z odpowiedzią od firmy</dt>
+      <dd>{{ stats.responseRate === null ? '–' : (stats.responseRate | number: '1.0-0') + '%' }}</dd>
+    </div>
+    <div class="sign">
+      <dt>dni średnio do pierwszej odpowiedzi</dt>
+      <dd>
+        {{ stats.averageDaysToFirstResponse === null ? '–' : (stats.averageDaysToFirstResponse | number: '1.0-1') }}
+      </dd>
+    </div>
+  </dl>
+  <p class="note">Odpowiedź to każda zmiana etapu po wysłaniu aplikacji, także odrzucenie.</p>
+
+  <section class="panel">
+    <h2>Wysłane aplikacje · ostatnie 8 tygodni</h2>
+    <div class="chart">
+      <canvas
+        baseChart
+        type="bar"
+        [data]="weeklyChart()"
+        [options]="weeklyChartOptions()"
+        aria-label="Liczba aplikacji wysłanych w każdym z ostatnich 8 tygodni"
+        role="img"
+      ></canvas>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Skuteczność według źródła</h2>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Źródło</th>
+          <th scope="col">Aplikacje</th>
+          <th scope="col">Odpowiedzi</th>
+          <th scope="col">% odpowiedzi</th>
+          <th scope="col">Oferty</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (row of stats.bySource; track row.source) {
+          <tr>
+            <th scope="row">{{ sourceLabel(row.source) }}</th>
+            <td>{{ row.applications }}</td>
+            <td>{{ row.responses }}</td>
+            <td>{{ row.responseRate === null ? '–' : (row.responseRate | number: '1.0-0') + '%' }}</td>
+            <td>{{ row.offers }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </section>
+} @else if (error()) {
+  <p class="message" role="alert">Nie udało się wczytać statystyk. Odśwież stronę, aby spróbować ponownie.</p>
+} @else {
+  <p class="message">Wczytywanie statystyk…</p>
+}

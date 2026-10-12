@@ -1,0 +1,111 @@
+@if (visibleReminders().length) {
+  <section class="band reminders" aria-label="Następny krok">
+    <!-- one sign at a time; the next one flips in after "Ukryj" -->
+    @for (reminder of visibleReminders().slice(0, 1); track reminder.id) {
+      <div class="band-line" [class.flip]="flipNext()" role="status">
+        <span class="inset" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M5 12h13m-5-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" /></svg>
+        </span>
+        <p class="band-text">
+          <strong>Następny krok: {{ reminder.company }}</strong> · {{ reminder.position }} – warto się przypomnieć.
+        </p>
+        <p class="band-days">
+          <span class="band-number">{{ daysSince(reminder.appliedAt) }}</span>
+          <span>dni bez odpowiedzi</span>
+        </p>
+        @if (visibleReminders().length > 1) {
+          <span class="band-queue">1 z {{ visibleReminders().length }}</span>
+        }
+        <button class="band-dismiss" type="button" (click)="dismiss(reminder)">Ukryj</button>
+      </div>
+    }
+  </section>
+}
+
+<div class="page">
+  <div class="board-header">
+    <h1>Moje aplikacje</h1>
+    <button matButton="filled" (click)="openDialog()">Dodaj aplikację</button>
+  </div>
+
+  @if (loaded() && applications().length === 0) {
+    <section class="empty-state">
+      <h2>Nie masz jeszcze żadnych aplikacji</h2>
+      <p>Dodaj pierwszą aplikację, a JobTrack przypomni Ci o follow-upie i policzy, które źródła działają najlepiej.</p>
+      <button matButton="filled" (click)="openDialog()">Dodaj pierwszą aplikację</button>
+    </section>
+  } @else {
+    <!-- phones see one column at a time; this row jumps between stages -->
+    <nav class="stage-switcher" aria-label="Przejdź do etapu">
+      @for (column of columns(); track column.value; let i = $index) {
+        <button
+          type="button"
+          [class.current]="visibleColumn() === i"
+          [attr.aria-current]="visibleColumn() === i ? 'true' : null"
+          (click)="showColumn(i)"
+        >
+          {{ column.label }} <span class="stage-count">{{ column.items.length }}</span>
+        </button>
+      }
+    </nav>
+    <div class="board" #board cdkDropListGroup (scroll)="onBoardScroll()">
+      @for (column of columns(); track column.value) {
+        <section class="column">
+          <h2>
+            <span class="column-label">{{ column.label }}</span>
+            <span class="column-count">{{ column.items.length }}</span>
+          </h2>
+          <div
+            class="cards"
+            cdkDropList
+            [cdkDropListData]="column.value"
+            (cdkDropListDropped)="drop($event)"
+            [attr.data-status]="column.value"
+          >
+            @for (application of column.items; track application.id) {
+              <article
+                class="card"
+                [class.overdue]="overdueIds().has(application.id)"
+                [class.rejected]="application.status === 'ODRZUCONO'"
+                cdkDrag
+                [cdkDragData]="application"
+                [cdkDragStartDelay]="{ touch: 250, mouse: 0 }"
+              >
+                <h3 class="company">{{ application.company }}</h3>
+                <p class="position">{{ application.position }}</p>
+                <p class="meta">{{ application.appliedAt | date: 'd MMM yyyy' }} · {{ sourceLabel(application) }}</p>
+                @if (application.salaryMin || application.salaryMax) {
+                  <p class="meta">
+                    {{ application.salaryMin === null ? '?' : (application.salaryMin | number) }}–{{
+                      application.salaryMax === null ? '?' : (application.salaryMax | number)
+                    }}
+                    PLN
+                  </p>
+                }
+                <div class="card-actions">
+                  <button matButton (click)="openDialog(application)">Edytuj</button>
+                  <button
+                    matButton
+                    [matMenuTriggerFor]="moveMenu"
+                    [attr.aria-label]="'Przenieś ' + application.company + ' do innego etapu'"
+                  >
+                    Przenieś
+                  </button>
+                  <mat-menu #moveMenu="matMenu">
+                    @for (status of statuses; track status.value) {
+                      @if (status.value !== application.status) {
+                        <button mat-menu-item (click)="moveTo(application, status.value)">{{ status.label }}</button>
+                      }
+                    }
+                  </mat-menu>
+                </div>
+              </article>
+            } @empty {
+              <p class="empty">Upuść kartę tutaj</p>
+            }
+          </div>
+        </section>
+      }
+    </div>
+  }
+</div>

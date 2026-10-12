@@ -1,0 +1,165 @@
+@use '@angular/material' as mat;
+
+// JobTrack signage palette, light-dark(light, dark). Yellow fills are reserved for
+// wayfinding (the next-step band). Thin marks that must stay visible on white
+// (focus, active nav, overdue frame) fall back to ink or deep signal in light mode.
+:root {
+  --jt-ground: light-dark(#f2f3f4, #101113);
+  --jt-panel: light-dark(#ffffff, #1c1e22);
+  --jt-panel-raised: light-dark(#e8e9eb, #24272c);
+  --jt-rule: light-dark(#d6d8db, #2c2f35);
+  --jt-frame: light-dark(#8a8d93, #6f726c);
+  --jt-ink: light-dark(#111214, #f5f5f0);
+  --jt-muted: light-dark(#55585e, #a2a49f);
+  --jt-signal: #ffd200;
+  --jt-on-signal: #0b0b0b;
+  --jt-mark: light-dark(#111214, #ffd200);
+  --jt-overdue: light-dark(#a88400, #ffd200);
+  --jt-stop: light-dark(#c43b26, #e5533d);
+  --jt-on-stop: light-dark(#ffffff, #0b0b0b);
+  --jt-hover-wash: light-dark(rgb(0 0 0 / 0.03), rgb(255 255 255 / 0.03));
+  --jt-lift: light-dark(rgb(0 0 0 / 0.18), rgb(0 0 0 / 0.5));
+  --jt-font: 'Hanken Grotesk Variable', 'Segoe UI', system-ui, sans-serif;
+  --jt-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+// Follows the system unless the visitor picked a theme (ThemeService sets data-theme)
+html {
+  height: 100%;
+  color-scheme: light dark;
+
+  &[data-theme='light'] {
+    color-scheme: light;
+  }
+
+  &[data-theme='dark'] {
+    color-scheme: dark;
+  }
+
+  @include mat.theme(
+    (
+      color: (
+        theme-type: color-scheme,
+        primary: mat.$yellow-palette,
+      ),
+      typography: (
+        plain-family: var(--jt-font),
+        brand-family: var(--jt-font),
+        bold-weight: 700,
+        medium-weight: 600,
+        regular-weight: 400,
+      ),
+      density: 0,
+    )
+  );
+
+  // Material components read these system tokens; mapping them onto the signage
+  // palette restyles dialogs, menus, fields and snackbars in one place.
+  --mat-sys-background: var(--jt-ground);
+  --mat-sys-surface: var(--jt-ground);
+  --mat-sys-surface-container-lowest: var(--jt-ground);
+  --mat-sys-surface-container-low: var(--jt-panel);
+  --mat-sys-surface-container: var(--jt-panel);
+  --mat-sys-surface-container-high: var(--jt-panel-raised);
+  --mat-sys-surface-container-highest: var(--jt-panel-raised);
+  --mat-sys-surface-variant: var(--jt-panel-raised);
+  --mat-sys-surface-dim: var(--jt-ground);
+  --mat-sys-surface-bright: var(--jt-panel-raised);
+  --mat-sys-on-surface: var(--jt-ink);
+  --mat-sys-on-surface-variant: var(--jt-muted);
+  --mat-sys-primary: var(--jt-ink);
+  --mat-sys-on-primary: var(--jt-ground);
+  --mat-sys-secondary-container: var(--jt-panel-raised);
+  --mat-sys-on-secondary-container: var(--jt-ink);
+  --mat-sys-outline: var(--jt-frame);
+  --mat-sys-outline-variant: var(--jt-rule);
+  --mat-sys-error: var(--jt-stop);
+  --mat-sys-on-error: var(--jt-on-stop);
+  --mat-sys-inverse-surface: var(--jt-ink);
+  --mat-sys-inverse-on-surface: var(--jt-ground);
+  --mat-sys-inverse-primary: var(--jt-ground);
+  --mat-sys-corner-full: 4px;
+  --mat-sys-corner-extra-large: 4px;
+  --mat-sys-corner-large: 4px;
+  --mat-sys-corner-medium: 4px;
+  --mat-sys-corner-small: 4px;
+  --mat-sys-corner-extra-small: 4px;
+
+  // Inputs as framed sign panels: 1px frame at rest, 2px signal frame in focus
+  --mat-form-field-outlined-outline-color: var(--mat-sys-outline);
+  --mat-form-field-outlined-hover-outline-color: var(--jt-ink);
+  --mat-form-field-outlined-focus-outline-color: var(--jt-mark);
+  --mat-form-field-outlined-focus-outline-width: 2px;
+  --mat-form-field-outlined-focus-label-text-color: var(--jt-mark);
+  --mat-form-field-outlined-container-shape: 4px;
+}
+
+// Focused outlined fields already show the signal frame; skip the extra ring
+.mat-mdc-form-field input:focus-visible,
+.mat-mdc-form-field textarea:focus-visible {
+  outline: none;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--jt-ground);
+  color: var(--jt-ink);
+  font: var(--mat-sys-body-medium);
+  font-family: var(--jt-font);
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+::selection {
+  background: var(--jt-signal);
+  color: var(--jt-on-signal);
+}
+
+input,
+textarea {
+  caret-color: var(--jt-mark);
+}
+
+:focus-visible {
+  outline: 2px solid var(--jt-mark);
+  outline-offset: 2px;
+}
+
+* {
+  scrollbar-color: var(--jt-rule) transparent;
+}
+
+// The application dialog fills the screen on phones (panelClass set in board.ts)
+@media (max-width: 599px) {
+  .cdk-overlay-pane.jt-dialog {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100dvh;
+
+    .mat-mdc-dialog-surface {
+      border-radius: 0;
+    }
+
+    .mat-mdc-dialog-content {
+      flex: 1;
+      max-height: none;
+    }
+
+    .mat-mdc-dialog-actions {
+      flex-wrap: wrap;
+      padding-bottom: max(16px, env(safe-area-inset-bottom));
+    }
+  }
+}
+
+// The drag preview is rendered in <body>, outside the board's encapsulated styles
+.cdk-drag-preview {
+  box-shadow: 0 12px 32px var(--jt-lift);
+}

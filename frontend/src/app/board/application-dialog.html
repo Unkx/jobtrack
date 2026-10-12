@@ -1,0 +1,143 @@
+<h2 mat-dialog-title>{{ application ? 'Edytuj aplikację' : 'Nowa aplikacja' }}</h2>
+
+<mat-dialog-content>
+  <form id="application-form" [formGroup]="form" (ngSubmit)="save()">
+    <mat-form-field>
+      <mat-label>Firma</mat-label>
+      <input matInput formControlName="company" />
+      <mat-error>Wpisz nazwę firmy</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Stanowisko</mat-label>
+      <input matInput formControlName="position" />
+      <mat-error>Wpisz nazwę stanowiska</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full">
+      <mat-label>Link do oferty</mat-label>
+      <input matInput type="url" formControlName="offerUrl" placeholder="https://" />
+      <mat-hint>Opcjonalnie</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Widełki od</mat-label>
+      <input matInput type="number" min="0" formControlName="salaryMin" />
+      <span matTextSuffix>PLN</span>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Widełki do</mat-label>
+      <input matInput type="number" min="0" formControlName="salaryMax" />
+      <span matTextSuffix>PLN</span>
+    </mat-form-field>
+
+    @if (form.hasError('salaryRange')) {
+      <p class="error full">Kwota „od” nie może być wyższa niż kwota „do”.</p>
+    }
+
+    <mat-form-field>
+      <mat-label>Źródło</mat-label>
+      <mat-select formControlName="source">
+        @for (source of sources; track source.value) {
+          <mat-option [value]="source.value">{{ source.label }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Data wysłania</mat-label>
+      <input matInput type="date" formControlName="appliedAt" />
+      <mat-error>Wybierz datę wysłania</mat-error>
+    </mat-form-field>
+
+    @if (!application) {
+      <mat-form-field class="full">
+        <mat-label>Notatki</mat-label>
+        <textarea
+          matInput
+          rows="3"
+          [formControl]="firstNote"
+          placeholder="Np. kto prowadzi rekrutację, stack, wrażenia z rozmowy"
+        ></textarea>
+      </mat-form-field>
+    }
+
+    @if (error(); as message) {
+      <p class="error full" role="alert">{{ message }}</p>
+    }
+  </form>
+
+  @if (application) {
+    <section class="section" aria-labelledby="notes-heading">
+      <h3 id="notes-heading">Notatki</h3>
+      <div class="note-form">
+        <mat-form-field>
+          <mat-label>Nowa notatka</mat-label>
+          <textarea
+            matInput
+            rows="2"
+            [formControl]="newNote"
+            placeholder="Np. kto prowadzi rekrutację, stack, wrażenia z rozmowy"
+          ></textarea>
+        </mat-form-field>
+        <button matButton="outlined" type="button" (click)="addNote()">Dodaj notatkę</button>
+      </div>
+      @if (noteError(); as message) {
+        <p class="error" role="alert">{{ message }}</p>
+      }
+      @for (note of notes(); track note.id) {
+        <article class="note">
+          <p>{{ note.content }}</p>
+          <div class="note-meta">
+            <time [attr.datetime]="note.createdAt">{{ note.createdAt | date: 'd MMM yyyy, HH:mm' }}</time>
+            <button class="text-action" type="button" (click)="deleteNote(note)">Usuń notatkę</button>
+          </div>
+        </article>
+      } @empty {
+        <p class="muted">Brak notatek. Zapisz tu ustalenia z rozmów, nazwiska i terminy.</p>
+      }
+    </section>
+
+    <section class="section" aria-labelledby="history-heading">
+      <h3 id="history-heading">Historia etapów</h3>
+      <ol class="timeline">
+        <li>
+          <time [attr.datetime]="application.appliedAt">{{ application.appliedAt | date: 'd MMM yyyy' }}</time>
+          <span>Wysłano</span>
+        </li>
+        @for (change of history(); track change.changedAt) {
+          <li>
+            <time [attr.datetime]="change.changedAt">{{ change.changedAt | date: 'd MMM yyyy' }}</time>
+            <span>{{ statusLabel(change.toStatus) }}</span>
+          </li>
+        }
+      </ol>
+    </section>
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  @if (confirmingDelete()) {
+    <span class="confirm" role="alert">Usunąć aplikację do {{ application?.company }}? Historii statusów nie da się odzyskać.</span>
+    <button matButton type="button" [disabled]="saving()" (click)="confirmingDelete.set(false)">Nie usuwaj</button>
+    <button matButton="filled" class="delete-confirm" type="button" [disabled]="saving()" (click)="remove()">
+      {{ saving() ? 'Usuwanie…' : 'Usuń aplikację' }}
+    </button>
+  } @else {
+    @if (application) {
+      <button matButton class="delete" type="button" [disabled]="saving()" (click)="confirmingDelete.set(true)">
+        Usuń
+      </button>
+    }
+    <span class="spacer"></span>
+    <button matButton type="button" [disabled]="saving()" mat-dialog-close>Anuluj</button>
+    <button matButton="filled" type="submit" form="application-form" [disabled]="saving()">
+      @if (saving()) {
+        Zapisywanie…
+      } @else {
+        {{ application ? 'Zapisz zmiany' : 'Dodaj aplikację' }}
+      }
+    </button>
+  }
+</mat-dialog-actions>

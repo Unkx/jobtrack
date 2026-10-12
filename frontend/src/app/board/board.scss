@@ -1,0 +1,304 @@
+:host {
+  display: block;
+}
+
+// Next-step band: the only yellow surface in the product
+.band {
+  display: flex;
+  flex-direction: column;
+  background: var(--jt-signal);
+  color: var(--jt-on-signal);
+}
+
+.band-line {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 24px;
+
+  // after "Ukryj" the next message flips in like a sign panel
+  &.flip {
+    transition:
+      transform 240ms var(--jt-ease-out),
+      opacity 240ms var(--jt-ease-out);
+
+    @starting-style {
+      transform: translateY(-40%);
+      opacity: 0;
+    }
+  }
+
+  .inset {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    background: var(--jt-on-signal);
+    color: var(--jt-signal);
+  }
+}
+
+.band-text {
+  flex: 1;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.band-days {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0;
+  font-weight: 600;
+}
+
+// the band numeral outranks the column counts: it is read first
+.band-number {
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 0.9;
+}
+
+.band-queue {
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.band-dismiss {
+  min-height: 40px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--jt-on-signal);
+  color: var(--jt-signal);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline-color: var(--jt-on-signal);
+  }
+}
+
+.page {
+  padding: 24px;
+}
+
+.board-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+}
+
+.empty-state {
+  max-width: 480px;
+  margin: 80px auto;
+  text-align: center;
+
+  h2 {
+    margin: 0 0 8px;
+    font-size: 22px;
+    font-weight: 800;
+  }
+
+  p {
+    margin: 0 0 24px;
+    color: var(--jt-muted);
+  }
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+  overflow-x: auto;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+
+  h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0 0 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--jt-rule);
+    font-size: 15px;
+    font-weight: 700;
+  }
+}
+
+// counts read like gate numbers
+.column-count {
+  order: -1;
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 0.9;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-height: 160px;
+  border-radius: 4px;
+  transition: background-color 150ms var(--jt-ease-out);
+
+  &.cdk-drop-list-receiving {
+    background: var(--jt-hover-wash);
+  }
+}
+
+.card {
+  padding: 14px 14px 6px;
+  border-radius: 4px;
+  background: var(--jt-panel);
+  cursor: grab;
+
+  &.overdue {
+    box-shadow: inset 0 0 0 2px var(--jt-overdue);
+  }
+
+  &.rejected .company {
+    color: var(--jt-muted);
+  }
+}
+
+.company {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.position {
+  margin: 2px 0 0;
+}
+
+.meta {
+  margin: 6px 0 0;
+  color: var(--jt-muted);
+  font-size: 13px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 4px;
+  margin: 6px -12px 0;
+  --mat-button-text-container-height: 44px;
+}
+
+.stage-switcher {
+  display: none;
+}
+
+.empty {
+  margin: auto;
+  color: var(--jt-muted);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.3;
+}
+
+.cdk-drag-animating,
+.cards.cdk-drop-list-dragging .card:not(.cdk-drag-placeholder) {
+  transition: transform 200ms var(--jt-ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .band-line,
+  .cdk-drag-animating,
+  .cards.cdk-drop-list-dragging .card:not(.cdk-drag-placeholder) {
+    transition: none;
+  }
+}
+
+// On phones show one column at a time and let it snap into place
+@media (max-width: 599px) {
+  .band-line {
+    flex-wrap: wrap;
+    padding: 12px 16px;
+  }
+
+  .band-text {
+    flex-basis: calc(100% - 60px);
+    font-size: 16px;
+  }
+
+  .band-days {
+    margin-left: 60px;
+    flex: 1;
+  }
+
+  .band-number {
+    font-size: 40px;
+  }
+
+  .page {
+    padding: 16px;
+  }
+
+  .board-header h1 {
+    font-size: 22px;
+  }
+
+  .stage-switcher {
+    display: flex;
+    gap: 4px;
+    margin: 16px -16px 0;
+    padding: 0 16px;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--jt-rule);
+    scrollbar-width: none;
+
+    button {
+      flex: none;
+      min-height: 44px;
+      padding: 0 10px;
+      border: 0;
+      background: none;
+      color: var(--jt-muted);
+      font: inherit;
+      font-weight: 600;
+      white-space: nowrap;
+      box-shadow: inset 0 -3px transparent;
+      cursor: pointer;
+
+      &.current {
+        color: var(--jt-ink);
+        box-shadow: inset 0 -3px var(--jt-mark);
+      }
+    }
+  }
+
+  .stage-count {
+    font-weight: 800;
+  }
+
+  .board {
+    grid-template-columns: repeat(5, 85%);
+    margin-top: 16px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .column {
+    scroll-snap-align: start;
+  }
+}

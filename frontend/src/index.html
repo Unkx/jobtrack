@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <title>JobTrack</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f3f4" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101113" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <script>
+      // Apply the stored theme before the app boots so the page never flashes the other scheme
+      try {
+        var theme = localStorage.getItem('jobtrack.theme');
+        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+</html>

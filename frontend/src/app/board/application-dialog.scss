@@ -1,0 +1,146 @@
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 12px;
+  padding-top: 8px;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.error {
+  margin: 0 0 12px;
+  color: var(--jt-stop);
+}
+
+.delete {
+  color: var(--jt-stop);
+}
+
+.spacer {
+  flex: 1;
+}
+
+.confirm {
+  flex: 1;
+  margin-right: 8px;
+}
+
+.delete-confirm {
+  --mat-button-filled-container-color: var(--jt-stop);
+  --mat-button-filled-label-text-color: var(--jt-on-stop);
+}
+
+.section {
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--jt-rule);
+
+  h3 {
+    margin: 0 0 12px;
+    font-size: 15px;
+    font-weight: 700;
+  }
+}
+
+.note-form {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  mat-form-field {
+    flex: 1;
+  }
+
+  button {
+    margin-top: 8px;
+  }
+}
+
+.note {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--jt-rule);
+
+  p {
+    margin: 0;
+    white-space: pre-wrap;
+  }
+}
+
+.note-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+  color: var(--jt-muted);
+  font-size: 13px;
+}
+
+.text-action {
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--jt-muted);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--jt-stop);
+  }
+}
+
+.muted {
+  margin: 0;
+  color: var(--jt-muted);
+}
+
+// stages read top to bottom like a departures list
+.timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 12px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--jt-rule);
+    font-weight: 600;
+  }
+
+  time {
+    color: var(--jt-muted);
+    font-weight: 400;
+  }
+
+  li:last-child {
+    border-bottom: 0;
+  }
+}
+
+// Phones: one field per row so values are not truncated
+@media (max-width: 599px) {
+  form {
+    grid-template-columns: 1fr;
+  }
+
+  .confirm {
+    flex-basis: 100%;
+    margin: 0 0 8px;
+  }
+
+  .note-form {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    button {
+      margin: 0 0 8px;
+    }
+  }
+}
